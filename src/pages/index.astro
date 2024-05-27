@@ -1,0 +1,83 @@
+---
+import Header from '../components/Header.astro'
+import Hamburger from '../components/solid/Hamburger'
+import Info from '../components/Info.astro'
+import Carousel from '../components/Carousel.astro'
+import Corsi from '../components/Corsi.astro'
+import Footer from '../components/Footer.astro'
+import Abbonamenti from '../components/Abbonamenti.astro'
+import Istruttori from '../components/Istruttori.astro'
+import Recensioni from '../components/Recensioni.astro'
+
+export interface Props {
+  background: string
+}
+const { background } = Astro.props as Props
+const links: string[] = ['info','promozioni','abbonamenti', 'corsi', 'trainers','recensioni','contatti']
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../components/js/javatest.js"></script>
+    <title>Heavenly Gym</title>
+
+	<body class="text-[#070808] select-none bg-[#ebeaea]">
+    <header class={`sticky bg-[#ebeaea] top-0 z-[9999] ${background} transition duration-300 ease-in-out`}>
+      <div>
+      <Header/>
+      </div>
+      <section id="mobile-menu" class="hidden w-full origin-top animate-open-menu flex-col bg-[#ebeaea] text-4xl items-center">
+          <Hamburger links={links} client:load />
+      </section>
+  </header>
+<!--Info Abbozzato-->
+    <div id="info">
+      <Info />
+  </div>
+  </div>
+  <div class="flex flex-col items-center">
+  <h2 class="font-permanent text-4xl lg:text-5xl mb-4">Promozioni</h2>
+  <p class="text-sm lg:text-xl xl:text-center md:text-left">Ogni settimana proponiamo nuove promozioni per tutti i tipi di abbonati</p>
+  </div>
+  <div id="promozioni" class="pt-20 pb-20">
+      <Carousel />
+  </div>
+  <div class="flex flex-col items-center">
+    <h2 class="font-permanent text-4xl lg:text-5xl mb-4">Abbonamenti</h2>
+    <p class="text-sm lg:text-xl xl:text-center md:text-left">Proponiamo tre diversi tipi di abbonamenti in base alle esigenze dei nostri clienti</p>
+  </div>
+  <div id="abbonamenti" class="pt-20 pb-20">
+    <Abbonamenti />
+  </div>
+  <div class="flex flex-col items-center">
+    <h2 class="font-permanent text-4xl lg:text-5xl mb-4">Corsi</h2>
+    <p class="text-sm lg:text-xl xl:text-center md:text-left">La nostra palestra dispone di molteplici corsi per tutti i gusti e per tutti i tipi di attività</p>
+  </div>
+  <div id="corsi" class="pt-20">
+    <Corsi />
+  </div>
+  <div class="flex flex-col items-center">
+    <h2 class="font-permanent text-4xl lg:text-5xl mb-4">Trainers</h2>
+    <p class="text-sm lg:text-xl xl:text-center md:text-left">Nella nostra palestra lavorano i migliori trainers di tutto il mondo, istruiti apposta per una migliore esperienza</p>
+  </div>
+  <div id="trainers" class="pt-20 pb-20">
+    <Istruttori />
+  </div>
+  <div class="flex flex-col items-center">
+    <h2 class="font-permanent text-4xl lg:text-5xl mb-4">Recensioni</h2>
+    <p class="text-sm lg:text-xl xl:text-center md:text-left">Alcuni dei commenti lasciati dai nostri utenti</p>
+  </div>
+  <!--Da finire con carosello infinito -->
+  <div id="recensioni" class="pt-10">
+    <Recensioni />
+  </div>
+  <div id="contatti">
+    <Footer />
+  </div>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<section class="flex justify-center items-center">
+    <!--Slider-->
+    <div id="carousel-slide" class="relative w-[1350px] h-[880px]">
+        <!--Slide 1-->
+        <div class="z-1 absolute w-full">
+            <img id="slide-1" class="z-1 w-full rounded-md" src="https://images.pexels.com/photos/4753985/pexels-photo-4753985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+            <!--Info-->
+            <div id="slide-1-info" class="absolute top-0 px-[30px] py-[50px]">
+                <h2 class="md:text-5xl text-white uppercase font-extrabold sm:text-3xl">Corso di Box</h2>
+                <p class="md:text-lg text-white text-opacity-75 bg-black bg-opacity-20 md:w-[60%] p-[10px] rounded mt-[10px] sm:text-base">Sia che tu sia un principiante, o un esperto che desidera migliorare le sue abilità, il nostro corso fa al caso tuo.</p>
+            </div>
+        </div>
+        <!--Slide 2-->
+        <div class="z-1 absolute w-full">
+            <img id="slide-2" class="z-1 w-full rounded-md" src="https://images.pexels.com/photos/974502/pexels-photo-974502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+            <div id="slide-2-info" class="absolute top-0 px-[30px] py-[50px]">
+                <h2 class="md:text-5xl text-white uppercase font-extrabold sm:text-3xl">Campo da Basket</h2>
+                <p class="md:text-lg text-white text-opacity-75 bg-black bg-opacity-20 md:w-[60%] p-[10px] rounded mt-[10px] sm:text-base">Il campo da basket regolamentare al coperto è affittabile e disponibile a tutti gli abbonati di tipo 'iride' o 'angelo'.</p>
+            </div>
+        </div>
+        <!--Slide 3-->
+        <div id="slide-3" class="z-1 absolute w-full">
+            <img class="z-1 w-full rounded-md" src="https://images.pexels.com/photos/1092877/pexels-photo-1092877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+            <div id="slide-3-info" class="absolute top-0 px-[30px] py-[50px]">
+                <h2 class="md:text-5xl text-white uppercase font-extrabold sm:text-3xl">Sala Pesi</h2>
+                <p class="md:text-lg text-white text-opacity-75 bg-black bg-opacity-20 md:w-[60%] p-[10px] rounded mt-[10px] sm:text-base">La nostra sala pesi è attrezzata con i migliori macchinari e con i più esperti personal trainers di tutto il mondo.</p>
+            </div>
+        </div>
+       
+        <!--Prev-->
+        <div class="absolute top-[13%] md:top-[27%] lg:top-[50%] left-[10px] md:left-[5px] lg:left-[10px]">
+            <button id="prev-btn" class="bg-white bg-opacity-75 hover:bg-white hover:scale-[1.12] w-[25px] h-[25px] rounded-full md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px]">
+                <svg fill="#000000" viewBox="-12 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.28 23.28c-0.2 0-0.44-0.080-0.6-0.24l-6.44-6.44c-0.32-0.32-0.32-0.84 0-1.2l6.44-6.44c0.32-0.32 0.84-0.32 1.2 0 0.32 0.32 0.32 0.84 0 1.2l-5.8 5.84 5.84 5.84c0.32 0.32 0.32 0.84 0 1.2-0.16 0.16-0.44 0.24-0.64 0.24z"></path>
+                </svg>
+            </button>
+        </div>
+        <!--Next-->
+        <div class="absolute top-[13%] md:top-[27%] lg:top-[50%] right-[10px] md:right-[5px] lg:right-[10px]">
+            <button id="next-btn" class="bg-white bg-opacity-75 hover:bg-white hover:scale-[1.12] w-[25px] h-[25px] rounded-full md:w-[35px] md:h-[35px] lg:w-[40px] lg:h-[40px]">
+                <svg fill="#000000" viewBox="-12 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.88 23.28c-0.2 0-0.44-0.080-0.6-0.24-0.32-0.32-0.32-0.84 0-1.2l5.76-5.84-5.8-5.84c-0.32-0.32-0.32-0.84 0-1.2 0.32-0.32 0.84-0.32 1.2 0l6.44 6.44c0.16 0.16 0.24 0.36 0.24 0.6s-0.080 0.44-0.24 0.6l-6.4 6.44c-0.2 0.16-0.4 0.24-0.6 0.24z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('#carousel-slide img');
+    const slideCount = slides.length;
+  
+    function showSlide(n) {
+      currentSlide = (n + slideCount) % slideCount;
+  
+      // Nasconde tutte le immagini
+      for (let i = 0; i < slideCount; i++) {
+        slides[i].classList.add('hidden');
+      }
+  
+      // Mostra la slide corrente
+      slides[currentSlide].classList.remove('hidden');
+  
+      // Aggiorna le informazioni corrispondenti alla slide corrente
+      changeInfo(currentSlide + 1);
+    }
+  
+    // Mostra la prima slide all'avvio
+    showSlide(0);
+  
+    // Cambia slide automaticamente ogni 8 secondi
+    setInterval(function () {
+      showSlide(currentSlide + 1);
+    }, 8000);
+  
+    // Aggiungi eventi ai bottoni
+    const btn1 = document.querySelector('#btn-1');
+    const btn2 = document.querySelector('#btn-2');
+    const btn3 = document.querySelector('#btn-3');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+  
+    
+  
+    prevBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      showSlide(currentSlide - 1);
+    });
+  
+    nextBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      showSlide(currentSlide + 1);
+    });
+  
+    var slideInfo = [
+      {
+        title: "Corso di Box",
+        description: "Sia che tu sia un principiante, o un esperto che desidera migliorare le sue abilità, il nostro corso fa al caso tuo."
+      },
+      {
+        title: "Campo da Basket",
+        description: "Il campo da basket regolamentare al coperto è affittabile e disponibile a tutti gli abbonati di tipo 'iride' o 'angelo'."
+      },
+      {
+        title: "Sala Pesi",
+        description: "La nostra sala pesi è attrezzata con i migliori macchinari e con i più esperti personal trainers di tutto il mondo."
+      }
+    ];
+  
+    // Funzione per cambiare le informazioni in base all'immagine visualizzata
+    function changeInfo(slideNumber) {
+      // Nascondi tutte le informazioni
+      document.querySelectorAll("[id$='-info']").forEach(function (element) {
+        element.style.display = "none";
+      });
+      // Mostra solo l'informazione corrispondente alla slide visualizzata
+      document.getElementById("slide-" + slideNumber + "-info").style.display = "block";
+    }
+  
+    // Starta con la prima slide
+    changeInfo(1);
+  </script>
+  

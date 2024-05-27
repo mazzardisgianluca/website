@@ -1,0 +1,27 @@
+---
+import Navbar from './solid/Navbar'
+const links: string[] = ['info','promozioni','abbonamenti', 'corsi', 'trainers','recensioni','contatti']
+---
+<head>
+<script src="./js/javatest.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+    <div id="changenav" class="flex justify-between items-center max-w-screen-lg p-2 mx-auto bg-[#ebeaea] transition duration-300 ease-in-out xl:max-w-screen-xl">
+      <h1 class= "text-3xl p-3 font-permanent flex-none w-15 h-15 ">
+        <a href="/">Heavenly Gym</a>
+      </h1>
+      <section>
+        <button id="hamburger-button" class="relative top-[16px] h-8 w-8 right-[50px] cursor-pointer text-3xl md:hidden" >
+          <div class="absolute top-1 h-[5px] w-8 rounded bg-black
+           before:absolute before:h-[5px] before:-right-0 before:w-8 before:translate-y-2.5 before:rounded before:bg-black
+           after:absolute after:h-[5px] after:-right-0 after:w-8 after:translate-y-5 after:rounded after:bg-black"
+          ></div>
+        </button>
+      <nav>
+        <Navbar links={links} client:load />
+      </nav>
+      </section>
+    </div>
